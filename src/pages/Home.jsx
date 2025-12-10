@@ -1,20 +1,33 @@
 import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import MealCard from "../components/MealCard";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Loader from "../ui/Loader";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
+  const[loading, setLoading] = useState(true);
+
+
+
+
 
   useEffect(() => {
     axios
       .get("/categories.php")
       .then((res) => {
         setCategories(res.data.categories);
+        setLoading(false); 
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+
+  if(loading) return <Loader />
+
 
   return (
     <>
@@ -24,7 +37,7 @@ const Home = () => {
         <div className="px-10 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {categories.length > 0 &&
             categories.map((category) => (
-              <MealCard key={category.idCategory} category={category} />
+              <MealCard key={category.idCategory} category={category}  />
             ))}
         </div>
       </div>
