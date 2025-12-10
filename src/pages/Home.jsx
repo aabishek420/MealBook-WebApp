@@ -1,10 +1,32 @@
-import React from "react";
+import axios from "../api/axios";
+import React, { useEffect, useState } from "react";
+import MealCard from "../components/MealCard";
 
 const Home = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/categories.php")
+      .then((res) => {
+        setCategories(res.data.categories);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
-      <div className="min-h-screen flex justify-center items-center">
-        <h2 className='text-xl md:text-2xl lg:text-3xl text-center lg:text-left text-primary font-bold mb-5'>Home Page</h2>
+      <div className="p-10">
+        <h1 className='text-xl md:text-2xl lg:text-3xl text-center lg:text-left text-primary font-bold mb-5'>Categories</h1>
+       
+        <div className="px-10 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {categories.length > 0 &&
+            categories.map((category) => (
+              <MealCard key={category.idCategory} category={category} />
+            ))}
+        </div>
       </div>
     </>
   );
