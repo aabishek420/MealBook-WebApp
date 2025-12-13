@@ -11,11 +11,12 @@ const FoodCard = ({ id, title, image, navigateTo, favouriteId }) => {
   const { addToFavourites, isFavourite } = useFavourites();
 
   useGSAP(() => {
-    gsap.to(cardRef.current, {
+    gsap.to(".card", {
+      duration: 1,
       opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out",
+      delay: 0.5,
+      stagger: 0.1,
+      ease: "sine.out",
     });
   });
 
@@ -23,7 +24,7 @@ const FoodCard = ({ id, title, image, navigateTo, favouriteId }) => {
     <div
       ref={cardRef}
       onClick={() => navigate(navigateTo)}
-      className="opacity-0 translate-y-5 bg-base-100 rounded-3xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer border border-gray-100 relative"
+      className=" card opacity-0 translate-y-5 bg-base-100 rounded-3xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer border border-gray-100 relative"
     >
       {favouriteId && (
         <button
@@ -35,7 +36,7 @@ const FoodCard = ({ id, title, image, navigateTo, favouriteId }) => {
               image,
             });
           }}
-          className="absolute top-2 right-4 z-10"
+          className="absolute top-2 right-4 z-10 bg-base-300  px-1 py-1 rounded-full"
         >
           <FaHeart
             className={`w-5 h-5 ${
