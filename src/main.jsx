@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { BrowserRouter } from "react-router-dom";
+import FavouritesProvider from "./context/FavouriteContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+    <FavouritesProvider>
     <Navbar />
     <App />
+    </FavouritesProvider>
     </BrowserRouter>
   </StrictMode>
 );

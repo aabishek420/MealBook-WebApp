@@ -1,16 +1,11 @@
 import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import MealCard from "../components/MealCard";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import Loader from "../ui/Loader";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
   const[loading, setLoading] = useState(true);
-
-
-
 
 
   useEffect(() => {
@@ -26,6 +21,7 @@ const Home = () => {
   }, []);
 
 
+  
   if(loading) return <Loader />
 
 
