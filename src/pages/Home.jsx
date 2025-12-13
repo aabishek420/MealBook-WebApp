@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="p-10">
-      <h1 className="text-3xl font-bold mb-6 text-primary">Categories</h1>
+      <h1 className="text-xl md:text-2xl lg:text-3xl text-center lg:text-left font-bold mb-6 text-primary">Categories</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {categories.map(cat => (

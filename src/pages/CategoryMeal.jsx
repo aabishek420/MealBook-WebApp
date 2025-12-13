@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "../api/axios";
 import Loader from "../ui/Loader";
 import FoodCard from "../components/MealCard";
+import { IoArrowBack } from "react-icons/io5";
 
 const CategoryMeal = () => {
   const { category } = useParams();
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
 
 
@@ -24,9 +26,13 @@ const CategoryMeal = () => {
 
   return (
     <div className="p-10">
-      <h1 className="text-3xl font-bold mb-6">
+
+      <div onClick={()=>navigate(-1)} className="flex  items-center gap-2  group cursor-pointer">
+        <IoArrowBack className="h-6 w-10 group-hover:-translate-x-2 text-primary transition-all duration-200 " />
+      <h1 className="text-xl md:text-2xl lg:text-3xl text-center lg:text-left font-bold  text-primary group-hover:translate-x-2 transition-all duration-200">
         {category} Meals
       </h1>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {meals.map(meal => (
