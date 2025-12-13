@@ -36,7 +36,7 @@ const FoodCard = ({ id, title, image, navigateTo, favouriteId }) => {
               image,
             });
           }}
-          className="absolute top-2 right-4 z-10 bg-base-300  px-1 py-1 rounded-full"
+          className="absolute top-2 right-4 z-10 bg-base-300  px-1 py-1 rounded-full cursor-pointer"
         >
           <FaHeart
             className={`w-5 h-5 ${
