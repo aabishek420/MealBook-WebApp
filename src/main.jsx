@@ -9,10 +9,10 @@ import FavouritesProvider from "./context/FavouriteContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-    <FavouritesProvider>
-    <Navbar />
-    <App />
-    </FavouritesProvider>
+      <FavouritesProvider>
+        <Navbar />
+        <App />
+      </FavouritesProvider>
     </BrowserRouter>
   </StrictMode>
 );

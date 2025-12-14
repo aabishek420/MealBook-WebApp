@@ -95,71 +95,51 @@ const Navbar = () => {
           className="md:hidden text-2xl text-primary"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <FiX /> : <FiMenu />}
+          {isMenuOpen ? <FiX className="bg-base-300  rounded-sm hover:bg-base-200"/> : <FiMenu />}
         </button>
       </div>
-      {/* //Mobile Menu */}
+
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <ul className="md:hidden mt-4 flex flex-col gap-2 text-lg font-medium">
-          {/* Home */}
-          <li>
-            <NavLink
-              to="/"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `${"flex gap-2 items-center px-4 py-2 rounded-full transition cursor-pointer"} ${
-                  isActive ? "text-primary font-bold" : "text-primary/70"
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <span
-                    className={`p-2 rounded-full transition ${
-                      isActive ? "bg-primary text-white" : "hover:bg-primary/10"
-                    }`}
-                  >
-                    <IoHome className="text-lg" />
-                  </span>
-                  <span>Home</span>
-                </>
-              )}
-            </NavLink>
-          </li>
+        <div className="md:hidden absolute right-4 top-15 bg-white rounded-2xl shadow-xl p-3 w-48">
+          <ul className="flex flex-col gap-2 text-base font-medium">
+            {/* Home */}
+            <li>
+              <NavLink
+                to="/"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2 rounded-xl transition ${
+                    isActive
+                      ? "text-primary font-semibold"
+                      : "text-base-content hover:bg-base-200"
+                  }`
+                }
+              >
+                <IoHome className="text-lg" />
+                <span>Home</span>
+              </NavLink>
+            </li>
 
-          {/* //Favourites */}
-          <li>
-            <NavLink
-              to="/favourites"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `${"flex gap-2 items-center px-4 py-2 rounded-full transition cursor-pointer"} ${
-                  isActive ? "text-primary font-bold" : "text-primary/70"
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <span
-                    className={`relative p-2 rounded-full transition ${
-                      isActive ? "bg-primary text-white" : "hover:bg-primary/10"
-                    }`}
-                  >
-                    <MdOutlineFavoriteBorder className="text-lg" />
-
-                    {favCount > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] min-w-[16px] h-4 px-1 flex items-center justify-center rounded-full">
-                        {favCount}
-                      </span>
-                    )}
-                  </span>
-
-                  <span>Favourites</span>
-                </>
-              )}
-            </NavLink>
-          </li>
-        </ul>
+            {/* Favourites */}
+            <li>
+              <NavLink
+                to="/favourites"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2 rounded-xl transition ${
+                    isActive
+                      ? "text-primary font-semibold"
+                      : "text-base-content hover:bg-base-200"
+                  }`
+                }
+              >
+                <MdOutlineFavoriteBorder className="text-lg" />
+                <span>Favorites</span>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       )}
     </nav>
   );

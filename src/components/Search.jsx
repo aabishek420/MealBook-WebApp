@@ -57,8 +57,8 @@ const Search = () => {
       <h1 className="text-xl md:text-2xl lg:text-3xl text-center lg:text-left font-bold text-primary">Search Meals</h1>
 
       {/* ===== Controls ===== */}
-      <div className="flex gap-6">
-        <div className="flex gap-2 justify-center items-center  input w-full border-none rounded-lg ">
+      <div className=" flex flex-col sm:flex-row    gap-6">
+        <div className="flex   gap-2 justify-center items-center  input w-full border-none rounded-lg ">
           <CiSearch className="w-5 h-5" />
 
           <input
