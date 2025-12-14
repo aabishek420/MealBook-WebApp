@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
+import FoodCard from "./MealCard";
+import Loader from "../ui/Loader";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -46,33 +48,30 @@ const Search = () => {
   /* ================= EFFECT ================= */
   useEffect(() => {
     fetchMeals();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, category, area]);
 
-  /* ================= UI ================= */
+
   return (
     <div className="space-y-8">
       {/* ===== Title ===== */}
-      <h1 className="text-3xl font-bold text-primary">
-        Search Meals
-      </h1>
+      <h1 className="text-xl md:text-2xl lg:text-3xl text-center lg:text-left font-bold text-primary">Search Meals</h1>
 
       {/* ===== Controls ===== */}
       <div className="flex gap-6">
         <div className="flex gap-2 justify-center items-center  input w-full border-none rounded-lg ">
-            <CiSearch className="w-5 h-5" />
-        
-        <input
-          type="text"
-          placeholder="Search by meal name & Press Enter ..."
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setCategory("");
-            setArea("");
-          }}
-          className=""
-        />
+          <CiSearch className="w-5 h-5" />
+
+          <input
+            type="text"
+            placeholder="Search by meal name & Press Enter ..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setCategory("");
+              setArea("");
+            }}
+            className=""
+          />
         </div>
 
         {/* Filter by category */}
@@ -114,39 +113,28 @@ const Search = () => {
 
       {/* ===== States ===== */}
       {loading && (
-        <p className="text-lg text-base-content/70">
-          Loading meals...
-        </p>
+        <p className="text-lg text-base-content/70"><Loader/></p>
       )}
 
-      {!loading && meals.length === 0 && (
+      {/* {!loading && meals.length === 0 && (
         <p className="text-lg font-medium text-base-content/70">
           Not Yet Searched...
         </p>
-      )}
+      )} */}
 
       {/* ===== Results ===== */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
         {meals.map((meal) => (
-          <div
-            key={meal.idMeal}
-            className="card bg-base-100 shadow-md hover:shadow-xl mb-5 transition cursor-pointer"
-            onClick={() => navigate(`/meal/${meal.idMeal}`)}
-          >
-            <figure>
-              <img
-                src={meal.strMealThumb}
-                alt={meal.strMeal}
-                className="w-full h-48 object-cover"
-              />
-            </figure>
-
-            <div className="card-body">
-              <h2 className="card-title text-lg">
-                {meal.strMeal}
-              </h2>
-            </div>
-          </div>
+          <>
+            <FoodCard
+              key={meal.idMeal}
+              id={meal.idMeal}
+              title={meal.strMeal}
+              image={meal.strMealThumb}
+              navigateTo={`/meal/${meal.idMeal}`}
+              favouriteId={meal.idMeal}
+            />
+          </>
         ))}
       </div>
     </div>
