@@ -27,9 +27,9 @@ const CategoryMeal = () => {
   return (
     <div className="p-10">
 
-      <div onClick={()=>navigate(-1)} className="flex  items-center gap-2  group cursor-pointer">
-        <IoArrowBack className="h-6 w-10 group-hover:-translate-x-2 text-primary transition-all duration-200 " />
-      <h1 className="text-xl md:text-2xl lg:text-3xl text-center lg:text-left font-bold  text-primary group-hover:translate-x-2 transition-all duration-200">
+      <div onClick={()=>navigate(-1)} className="flex  items-center gap-2 group cursor-pointer">
+        <IoArrowBack className="h-6 w-10 mb-7 group-hover:-translate-x-2 text-primary transition-all duration-200 " />
+      <h1 className="text-xl md:text-2xl lg:text-3xl text-center lg:text-left mb-7 font-bold  text-primary group-hover:translate-x-2 transition-all duration-200">
         {category} Meals
       </h1>
       </div>
