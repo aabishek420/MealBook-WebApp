@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { IoHome } from "react-icons/io5";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [favCount, setFavCount] = useState(0);
+  const navigate = useNavigate();
+
 
   // Load favourites count
   useEffect(() => {
@@ -20,7 +22,7 @@ const Navbar = () => {
     <nav className="glass bg-base-100/50 shadow-md sticky top-0 z-50 p-4">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="cursor-pointer">
+        <div onClick={()=>navigate("/")} className="cursor-pointer ">
           <h1 className="text-primary/85 text-2xl font-bold lg:text-4xl">
             MealBook
           </h1>
